@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+demo/*.mp3
+demo/*.mp4
+demo/silence*.mp3
+demo/video_only.mp4
+demo/full_audio.mp3
+demo/audio_concat.txt
+demo/video_concat.txt
+demo/concat.txt
