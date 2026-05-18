@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     mimo_tts_voice: str = "Mia"
 
     # --- STT ---
-    stt_provider: str = "openai"
+    stt_provider: str = "mimo-omni"
     openai_api_key: str = ""
     openai_stt_model: str = "whisper-1"
 

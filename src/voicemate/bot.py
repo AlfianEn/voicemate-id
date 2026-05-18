@@ -17,7 +17,7 @@ from telegram.ext import (
 )
 
 from .config import Settings
-from .llm import ChatMessage, MimoReasoningClient
+from .llm import MimoReasoningClient
 from .memory import ConversationMemory
 from .stt import SpeechToText, build_stt
 from .tts import MimoTTSClient
@@ -32,6 +32,8 @@ class VoiceMateBot:
             settings.stt_provider,
             openai_api_key=settings.openai_api_key,
             openai_model=settings.openai_stt_model,
+            mimo_api_key=settings.mimo_api_key,
+            mimo_base_url=settings.mimo_base_url,
         )
         self._llm = MimoReasoningClient(
             api_key=settings.mimo_api_key,
@@ -92,9 +94,9 @@ class VoiceMateBot:
 
             log.info("voice.in", user_id=user_id, chars=len(user_text))
 
-            self._memory.append(user_id, ChatMessage(role="user", content=user_text))
+            self._memory.append(user_id, {"role": "user", "content": user_text})
             messages = [
-                ChatMessage(role="system", content=self._settings.persona),
+                {"role": "system", "content": self._settings.persona},
                 *self._memory.history(user_id),
             ]
 
@@ -109,7 +111,7 @@ class VoiceMateBot:
                 await msg.reply_text("Hmm, gw belum kepikiran jawaban. Coba tanya lagi?")
                 return
 
-            self._memory.append(user_id, ChatMessage(role="assistant", content=reply_text))
+            self._memory.append(user_id, {"role": "assistant", "content": reply_text})
 
             # Send text first so the user can read while audio renders.
             await msg.reply_text(reply_text)
