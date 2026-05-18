@@ -22,10 +22,10 @@ class Settings(BaseSettings):
 
     # --- Xiaomi MiMo ---
     mimo_api_key: str
-    mimo_base_url: str = "https://api.xiaomimimo.com/v1"
-    mimo_reasoning_model: str = "mimo-reasoning"
+    mimo_base_url: str = "https://token-plan-sgp.xiaomimimo.com/v1"
+    mimo_reasoning_model: str = "mimo-v2.5-pro"
     mimo_tts_model: str = "mimo-v2.5-tts"
-    mimo_tts_voice: str = "zh_female_xiaoyu"
+    mimo_tts_voice: str = "Mia"
 
     # --- STT ---
     stt_provider: str = "openai"

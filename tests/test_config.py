@@ -18,7 +18,7 @@ def test_settings_load_minimal(monkeypatch: pytest.MonkeyPatch) -> None:
     assert s.telegram_bot_token == "test-token"
     assert s.mimo_api_key == "test-mimo-key"
     assert s.allowed_user_ids == set()
-    assert s.mimo_reasoning_model == "mimo-reasoning"
+    assert s.mimo_reasoning_model == "mimo-v2.5-pro"
     assert s.mimo_tts_model == "mimo-v2.5-tts"
 
 
